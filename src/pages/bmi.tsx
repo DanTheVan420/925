@@ -5,7 +5,7 @@ const BMI = () => {
   const mag = useRef(null);
 
   const [eredmeny, seteredmeny] = useState<string>("");
-  const calculate = (s, m) => {
+  const calculate = (s: number, m: number) => {
     const bmi = s / Math.pow(m / 100, 2);
     if (bmi < 16) {
       seteredmeny(`Súlyos soványság ${bmi}`);

@@ -14,7 +14,7 @@ const Homerseklet = () => {
         <button
           onClick={() => {
             setFah(Celsius.current.value * 1.8 + 32);
-            setKelv(+Celsius.current.value + 273.15);
+            setKelv(Celsius.current.value * 1 + 273.15);
           }}
         >
           szamitas
