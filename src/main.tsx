@@ -20,7 +20,6 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/penzvalto" element={<Penzvalto />} />
         <Route path="/bmi" element={<BMI />} />
         <Route path="/homerseklet" element={<Homerseklet />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
