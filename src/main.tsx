@@ -16,7 +16,6 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Kezdolap />} />
         <Route path="/szamologep" element={<Szamologep />} />
         <Route path="/penzvalto" element={<Penzvalto />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

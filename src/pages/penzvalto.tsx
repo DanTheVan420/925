@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const Penzvalto = () => {
-  const [forint, setforint] = useState<number>(0);
+  const forint = useRef(null);
 
   const [eredmeny, seteredmeny] = useState<string>("");
-  const [muvelet, setmuvelet] = useState<string>("dollar");
+  const muvelet = useRef(null);
   const calculate = (forint: number) => {
-    if (muvelet == "dollar") {
+    if (muvelet.current.value == "dollar") {
       seteredmeny(`${forint} forint = ${forint / 350} dollár`);
     } else {
       seteredmeny(`${forint} forint = ${forint / 380} euró`);
@@ -15,16 +15,14 @@ const Penzvalto = () => {
   return (
     <>
       <div style={{ margin: "auto", backgroundColor: "lightgrey" }}>
-        <input
-          type="number"
-          onChange={(e) => setforint(Number(e.target.value))}
-          placeholder="Forint"
-        />
-        <select name="" id="" onChange={(e) => setmuvelet(e.target.value)}>
+        <input type="number" ref={forint} placeholder="Forint" />
+        <select name="" id="" ref={muvelet}>
           <option value="dollar">dollar</option>
           <option value="euro">euro</option>
         </select>
-        <button onClick={() => calculate(forint)}>szamits xddd</button>
+        <button onClick={() => calculate(forint.current.value)}>
+          szamits xddd
+        </button>
         <p>{eredmeny}</p>
       </div>
     </>
