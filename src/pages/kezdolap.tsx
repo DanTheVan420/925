@@ -1,16 +1,16 @@
 const Kezdolap = () => {
   return (
     <>
-      <a href="http://localhost:5173/BMI">
+      <a href="/BMI">
         <p>BMI</p>
       </a>
-      <a href="http://localhost:5173/Homerseklet">
+      <a href="/Homerseklet">
         <p>Hőmérséklet</p>
       </a>
-      <a href="http://localhost:5173/Penzvalto">
+      <a href="/Penzvalto">
         <p>Penzvalto</p>
       </a>
-      <a href="http://localhost:5173/Szamologep">
+      <a href="/Szamologep">
         <p>Szamologep</p>
       </a>
     </>
