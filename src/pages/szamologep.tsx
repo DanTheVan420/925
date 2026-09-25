@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 const Szamologep = () => {
-  const [elso, Setelso] = useState<number>(0);
-  const [masodik, Setmasodik] = useState<number>(0);
+  const elso = useRef(null);
+  const masodik = useRef(null);
+
   const [eredmeny, setEredmeny] = useState<number>(0);
-  const [muvelet, setmuvelet] = useState<string>("+");
+  const muvelet = useRef(null);
   const Szamolj = (elso: number, masodik: number) => {
-    switch (muvelet) {
+    switch (muvelet.current.value) {
       case "+":
         setEredmeny(elso + masodik);
         break;
@@ -23,27 +24,17 @@ const Szamologep = () => {
   return (
     <>
       <div style={{ margin: "auto", backgroundColor: "lightgrey" }}>
-        <input
-          type="number"
-          onChange={(e) => {
-            Setelso(Number(e.target.value));
-          }}
-          placeholder="Első szám"
-        />
-        <input
-          type="number"
-          onChange={(e) => {
-            Setmasodik(Number(e.target.value));
-          }}
-          placeholder="Második szám"
-        />
-        <select name="" id="" onChange={(e) => setmuvelet(e.target.value)}>
+        <input type="number" ref={elso} placeholder="Első szám" />
+        <input ref={masodik} placeholder="Második szám" />
+        <select name="" id="" ref={muvelet}>
           <option value="+">+</option>
           <option value="-">-</option>
           <option value="*">*</option>
           <option value="/">/</option>
         </select>
-        <button onClick={() => Szamolj(elso, masodik)}>
+        <button
+          onClick={() => Szamolj(elso.current.value, masodik.current.value)}
+        >
           Calculate or whatever
         </button>
         <p>{eredmeny}</p>

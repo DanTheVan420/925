@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const BMI = () => {
-  const [suly, setsuly] = useState<number>(0);
-  const [mag, setmag] = useState<number>(0);
+  const suly = useRef(null);
+  const mag = useRef(null);
+
   const [eredmeny, seteredmeny] = useState<string>("");
   const calculate = (s, m) => {
     const bmi = s / Math.pow(m / 100, 2);
@@ -35,17 +36,13 @@ const BMI = () => {
     <>
       {" "}
       <div style={{ margin: "auto", backgroundColor: "lightgrey" }}>
-        <input
-          type="text"
-          onChange={(e) => setsuly(Number(e.target.value))}
-          placeholder="Suly (kg)"
-        />
-        <input
-          type="text"
-          onChange={(e) => setmag(Number(e.target.value))}
-          placeholder="Magassag (cm)"
-        />
-        <button onClick={() => calculate(suly, mag)}>nyomassad g</button>
+        <input type="text" ref={suly} placeholder="Suly (kg)" />
+        <input type="text" ref={mag} placeholder="Magassag (cm)" />
+        <button
+          onClick={() => calculate(suly.current.value, mag.current.value)}
+        >
+          nyomassad g
+        </button>
         <p>{eredmeny}</p>
       </div>
     </>
